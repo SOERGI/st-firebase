@@ -1,0 +1,15 @@
+<form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+  <div class="form-group">
+    <label>Location</label>
+    <input class="form-control" name="businessLocation" #businessLocation="ngModel" [(ngModel)]="profileService.selectedProfiles.businessLocation" placeholder="Location">
+  </div>
+  <div class="form-group">
+    <label>Category</label>
+    <input class="form-control" name="businessCategory" #businessCategory="ngModel" [(ngModel)]="profileService.selectedProfiles.businessCategory" placeholder="Category">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-default" type="submit" [disabled]="!profileForm.valid">
+      <i class="fa fa-floppy-o"></i>
+      Search</button>
+  </div>
+</form>

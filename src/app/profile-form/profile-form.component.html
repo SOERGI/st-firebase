@@ -1,0 +1,27 @@
+<form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)">
+  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="profileService.selectedProfiles.$key">
+  <div class="form-group">
+    <label>Business name</label>
+    <input class="form-control" name="businessName" #businessName="ngModel" [(ngModel)]="profileService.selectedProfiles.businessName" placeholder="Business name" required>
+  </div>
+  <div class="form-group">
+    <label>Location</label>
+    <input class="form-control" name="businessLocation" #businessLocation="ngModel" [(ngModel)]="profileService.selectedProfiles.businessLocation" placeholder="Location">
+  </div>
+  <div class="form-group">
+    <label>Category</label>
+    <input class="form-control" name="businessCategory" #businessCategory="ngModel" [(ngModel)]="profileService.selectedProfiles.businessCategory" placeholder="Category">
+  </div>
+  <div class="form-group">
+    <label>Image</label>
+    <input class="form-control" name="businessImage" #businessImage="ngModel" [(ngModel)]="profileService.selectedProfiles.businessImage" placeholder="Image">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-default" type="submit" [disabled]="!profileForm.valid">
+      <i class="fa fa-floppy-o"></i>
+      Submit</button>
+    <button class="btn btn-default" type="button" (click)="resetForm(profileForm)">
+      <i class="fa fa-repeat"></i>
+      Reset</button>
+  </div>
+</form>

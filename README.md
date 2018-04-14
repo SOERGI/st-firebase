@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Creating a model class
+Run `ng g class profile --type=model`
+
+## Create a service class
+Run `ng g s profile`
+
+## Firebase cli login
+Run `firebase login`
+
+## Install firebase cli
+Run `npm -g install firebase-tools`
+
+## Install toastr for notifications
+Run `npm install ngx-toastr --save`
