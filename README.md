@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
+## API Keys
+You need to add an `api-keys.ts` file as a sibling of the `app` folder:
+```
+export const masterFirebaseConfig = {
+  apiKey: 'xxxx',
+  authDomain: 'xxxx.firebaseapp.com',
+  databaseURL: 'https://xxxx.firebaseio.com',
+  projectId: 'xxxx',
+  storageBucket: 'xxxx.appspot.com',
+  messagingSenderId: 'xxxx'
+};
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

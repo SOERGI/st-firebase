@@ -4,24 +4,21 @@ import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/zip';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Profile} from './profile.model';
 
 @Injectable()
 export class SearchService {
 
-  constructor(private firebase: AngularFireDatabase ) { }
+  constructor(private firestore: AngularFirestore ) { }
 
-  getProfiles(): Observable<any[]> {
-      return this.firebase
-        .list('/profiles', ref =>
-          ref
-            .orderByChild('businessCategory')
-        )
-        .snapshotChanges()
-        .map(changes => {
-          return changes.map(c => {
-            return { key: c.payload.key, ...c.payload.val() };
+  getProfiles(category: string, location: string) {
+      return this.firestore.collection<Profile>('profiles',
+          ref => {
+            return ref
+              .where('businessCategory', '==', category)
+              .where('businessLocation', '==', location);
           });
-        });
   }
 
 }

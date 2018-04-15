@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {SearchService} from '../search.service';
 import {AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
+import {Query} from '../query.model';
 
 @Component({
   selector: 'app-app-search',
@@ -12,7 +13,8 @@ import {Observable} from 'rxjs/Observable';
 })
 export class AppSearchComponent implements OnInit {
 
-  resultList: Observable<any[]>;
+  results: Observable<any[]>;
+  currentQuery: Query = new Query();
 
   constructor(private searchService: SearchService) { }
 
@@ -20,7 +22,7 @@ export class AppSearchComponent implements OnInit {
   }
 
   onSubmit(searchForm: NgForm) {
-    this.resultList = this.searchService.getProfiles();
+    this.results = this.searchService.getProfiles(this.currentQuery.businessCategory, this.currentQuery.businessLocation).valueChanges();
   }
 
 }
