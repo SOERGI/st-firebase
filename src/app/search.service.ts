@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from "angularfire2/database";
-import {Observable} from "rxjs/Observable";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import "rxjs/add/operator/switchMap";
-import "rxjs/add/observable/zip";
+import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/zip';
 
 @Injectable()
 export class SearchService {
 
-  constructor(private firebase :AngularFireDatabase ) { }
+  constructor(private firebase: AngularFireDatabase ) { }
 
   getProfiles(): Observable<any[]> {
       return this.firebase
-        .list("/profiles", ref =>
+        .list('/profiles', ref =>
           ref
-            .orderByChild("businessCategory")
+            .orderByChild('businessCategory')
         )
         .snapshotChanges()
         .map(changes => {

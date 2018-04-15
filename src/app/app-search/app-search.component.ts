@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {SearchService} from "../search.service";
-import {AngularFireList} from "angularfire2/database";
+import {NgForm} from '@angular/forms';
+import {SearchService} from '../search.service';
+import {AngularFireList} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-app-search',
@@ -11,7 +12,7 @@ import {AngularFireList} from "angularfire2/database";
 })
 export class AppSearchComponent implements OnInit {
 
-  resultList: AngularFireList<any>;
+  resultList: Observable<any[]>;
 
   constructor(private searchService: SearchService) { }
 

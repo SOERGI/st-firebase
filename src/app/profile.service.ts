@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
-import {Profile} from "./profile.model";
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {Profile} from './profile.model';
+import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {Observable} from 'rxjs/Observable';
 
 
 @Injectable()
 export class ProfileService {
 
-  profileList: AngularFireList<any>;
-  selectedProfiles: Profile = new Profile();
-  constructor(private firebase :AngularFireDatabase ) { }
+  private profileListCol: AngularFirestoreCollection<Profile>;
+  constructor(private firestore: AngularFirestore ) { }
 
-  getData(){
-    this.profileList = this.firebase.list('profiles');
-    return this.profileList;
+  initDb() {
+    this.profileListCol = this.firestore.collection<Profile>('profiles');
   }
 
-  addProfile(profile : Profile)
-  {
-    this.profileList.push({
+  getData() {
+    return this.profileListCol.valueChanges();
+  }
+
+  addProfile(profile: Profile) {
+    this.profileListCol.add({
       businessName : profile.businessName,
       businessLocation : profile.businessLocation,
       businessCategory : profile.businessCategory,
@@ -25,18 +28,18 @@ export class ProfileService {
     });
   }
 
-  updateProfile(profile : Profile){
-    this.profileList.update(profile.$key,
-      {
-        businessName : profile.businessName,
-        businessLocation : profile.businessLocation,
-        businessCategory : profile.businessCategory,
-        businessImage : profile.businessImage
-      });
+  updateProfile(profile: Profile) {
+    // this.profileList.update(profile.$key,
+    //   {
+    //     businessName : profile.businessName,
+    //     businessLocation : profile.businessLocation,
+    //     businessCategory : profile.businessCategory,
+    //     businessImage : profile.businessImage
+    //   });
   }
 
-  removePofile($key : string){
-    this.profileList.remove($key);
+  removePofile($key: string) {
+    // this.profileList.remove($key);
   }
 
 }
