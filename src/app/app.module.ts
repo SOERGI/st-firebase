@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppSearchComponent } from './app-search/app-search.component';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import { masterFirebaseConfig } from '../api-keys';
+import {AuthService} from './auth.service';
 
 
 export const firebaseConfig = {

@@ -53,3 +53,6 @@ Run `npm -g install firebase-tools`
 
 ## Install toastr for notifications
 Run `npm install ngx-toastr --save`
+
+## Install font aweseome
+Run `npm install --save font-awesome angular2-fontawesome`
